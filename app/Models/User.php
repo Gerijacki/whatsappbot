@@ -6,15 +6,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    const STATUS_INACTIVE = 0;
-
-    const STATUS_ACTIVE = 1;
-
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use HasProfilePhoto;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -22,12 +24,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'username',
-        'phone',
+        'name',
         'email',
-        'status',
         'password',
-        'remember_token',
     ];
 
     /**
@@ -38,6 +37,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
     ];
 
     /**
@@ -46,46 +47,15 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'password' => 'hashed',
+        'email_verified_at' => 'datetime',
     ];
 
-    public function childs()
-    {
-        return $this->hasMany(Child::class);
-    }
-
-    public function posts()
-    {
-        return $this->hasMany(Post::class);
-    }
-
-    public function settings()
-    {
-        return $this->hasMany(UserSetting::class);
-    }
-
-    public function policies()
-    {
-        return $this->hasMany(Policy::class);
-    }
-
-    public function notifications()
-    {
-        return $this->hasMany(Notification::class, 'user_id');
-    }
-
-    public function userLastLogin()
-    {
-        return $this->hasMany(UserLastLogin::class);
-    }
-
-    public function passwordResets()
-    {
-        return $this->hasMany(PasswordReset::class, 'email', 'email');
-    }
-
-    public function isAdmin()
-    {
-        return $this->settings()->where('key', 'role')->where('value', 'admin')->exists();
-    }
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string>
+     */
+    protected $appends = [
+        'profile_photo_url',
+    ];
 }
