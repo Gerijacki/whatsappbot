@@ -27,18 +27,15 @@ class WhatsAppClientResource extends Resource
             TextInput::make('phone_number_id')->required(),
             TextInput::make('business_account_id')->required(),
             TextInput::make('access_token')->required(),
-            Select::make('user_id')
-                ->relationship('user', 'email')
-                ->searchable(),
         ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table->columns([
+            TextColumn::make('id')->sortable(),
             TextColumn::make('name')->searchable(),
             TextColumn::make('phone_number_id'),
-            TextColumn::make('user.email')->label('User'),
         ])->filters([])->actions([
             Tables\Actions\EditAction::make(),
             Tables\Actions\DeleteAction::make(),

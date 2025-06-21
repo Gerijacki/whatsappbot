@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('whatsapp_clients', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         $table->string('name');
         $table->string('phone_number_id');
         $table->string('business_account_id');

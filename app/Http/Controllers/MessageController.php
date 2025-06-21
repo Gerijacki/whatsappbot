@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use App\Events\MessageQueued;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SendMessageRequest;
@@ -13,7 +15,7 @@ class MessageController extends Controller
 
         $message = Message::create([
             ...$data,
-            'user_id' => auth()->id(),
+            'user_id' => auth()->id() ?? 1,
             'status' => 'pending'
         ]);
 

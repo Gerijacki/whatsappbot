@@ -1,7 +1,7 @@
 <?php
 
 use App\Constants\RouteConstants;
-
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
