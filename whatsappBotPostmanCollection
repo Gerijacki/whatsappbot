@@ -8,7 +8,7 @@
 	},
 	"item": [
 		{
-			"name": "Send Message",
+			"name": "Send Template Message",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -33,7 +33,48 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"whatsapp_client_id\": 1,\n    \"type\": \"template\",\n    \"phone_number\": \"34684149605\",\n    \"template_name\": \"hello_world\",\n    \"language_code\": \"en_US\",\n    \"parameters\": [\n    ]\n}",
+					"raw": "{\n    \"whatsapp_client_id\": 1,\n    \"type\": \"template\",\n    \"phone_number\": \"\",\n    \"template_name\": \"hello_world\",\n    \"language_code\": \"en_US\",\n    \"parameters\": [\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/messages",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Interactive Message",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"whatsapp_client_id\": 1,\n    \"type\": \"interactive\",\n    \"phone_number\": \"\",\n    \"interactive_content\": {\n      \"type\": \"button\",\n      \"body\": {\n        \"text\": \"¿Cómo podemos ayudarte hoy?\"\n      },\n      \"action\": {\n        \"buttons\": [\n          {\n            \"type\": \"reply\",\n            \"reply\": {\n              \"id\": \"support_button\",\n              \"title\": \"Soporte\"\n            }\n          },\n          {\n            \"type\": \"reply\",\n            \"reply\": {\n              \"id\": \"sales_button\",\n              \"title\": \"Ventas\"\n            }\n          }\n        ]\n      }\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
