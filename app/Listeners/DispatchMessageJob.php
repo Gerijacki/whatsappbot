@@ -4,8 +4,6 @@ namespace App\Listeners;
 
 use App\Events\MessageQueued;
 use App\Jobs\ProcessMessageJob;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class DispatchMessageJob
 {

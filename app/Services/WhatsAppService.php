@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\Message;
@@ -20,7 +21,7 @@ class WhatsAppService
             'text' => [
                 ...$basePayload,
                 'type' => 'text',
-                'text' => ['body' => $message->text]
+                'text' => ['body' => $message->text],
             ],
             'template' => [
                 ...$basePayload,
@@ -31,15 +32,15 @@ class WhatsAppService
                     'components' => [
                         [
                             'type' => 'body',
-                            'parameters' => array_map(fn($p) => ['type' => 'text', 'text' => $p], $message->parameters ?? [])
-                        ]
-                    ]
-                ]
+                            'parameters' => array_map(fn ($p) => ['type' => 'text', 'text' => $p], $message->parameters ?? []),
+                        ],
+                    ],
+                ],
             ],
             'interactive' => [
                 ...$basePayload,
                 'type' => 'interactive',
-                'interactive' => $message->interactive_content
+                'interactive' => $message->interactive_content,
             ],
         };
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Jobs;
 
 use App\Models\Message;
@@ -10,8 +11,9 @@ use Throwable;
 class ProcessMessageJob implements ShouldQueue
 {
     use Dispatchable;
-    
+
     public $tries = 3;
+
     public $backoff = 15;
 
     public function __construct(public Message $message) {}
@@ -30,7 +32,7 @@ class ProcessMessageJob implements ShouldQueue
 
         $this->message->update([
             'status' => $response->successful() ? 'sent' : 'failed',
-            'response' => $response->body()
+            'response' => $response->body(),
         ]);
     }
 
@@ -38,7 +40,7 @@ class ProcessMessageJob implements ShouldQueue
     {
         $this->message->update([
             'status' => 'failed',
-            'response' => $e->getMessage()
+            'response' => $e->getMessage(),
         ]);
     }
 }

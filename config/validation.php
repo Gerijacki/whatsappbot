@@ -4,5 +4,5 @@
 // Validation rules for all the api endpoints
 
 return [
-    
+
 ];

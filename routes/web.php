@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\AdminAuthController;
-use App\Http\Controllers\SetupController;
-use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Route;
 
 /*

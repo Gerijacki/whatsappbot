@@ -1,7 +1,8 @@
 <?php
+
 namespace App\Http\Requests;
+
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\WhatsAppClient;
 
 class SendMessageRequest extends FormRequest
 {
@@ -15,7 +16,7 @@ class SendMessageRequest extends FormRequest
             'template_name' => 'nullable|string',
             'language_code' => 'nullable|string',
             'parameters' => 'nullable|array',
-            'interactive_content' => 'nullable|array'
+            'interactive_content' => 'nullable|array',
         ];
     }
 }
