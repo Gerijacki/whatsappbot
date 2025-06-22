@@ -20,6 +20,7 @@ Route::middleware('throttle:api')->group(function () {
 
     Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers'], function () {
         Route::middleware(['auth:sanctum'])->group(function () {
+            Route::get(RouteConstants::message, [MessageController::class, 'index']);
             Route::post(RouteConstants::message, [MessageController::class, 'store']);
         });
     });

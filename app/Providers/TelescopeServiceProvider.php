@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
 use Laravel\Telescope\TelescopeApplicationServiceProvider;
@@ -61,14 +61,14 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         //     ]);
         // });
         Telescope::auth(function ($request) {
-            return session()->has('admin_authenticated');
+            return Auth::check();
         });
     }
 
     public function boot()
     {
         Telescope::auth(function ($request) {
-            return session()->has('admin_authenticated');
+            return Auth::check();
         });
     }
 }

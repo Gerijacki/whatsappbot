@@ -9,6 +9,16 @@ use App\Models\Message;
 
 class MessageController extends Controller
 {
+    /**
+     * Display a listing of the messages.
+     */
+    public function index()
+    {
+        $messages = Message::all();
+
+        return response()->json($messages);
+    }
+
     public function store(SendMessageRequest $request)
     {
         $data = $request->validated();

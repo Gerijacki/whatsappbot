@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "ef9b3e44-56e0-4fae-bf11-58ecce666f4f",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41222371",
+		"_collection_link": "https://duckhats-3040.postman.co/workspace/WhatsappBot~470a79d2-2163-43ef-8ba5-08f766f9dd10/collection/41222371-ef9b3e44-56e0-4fae-bf11-58ecce666f4f?action=share&source=collection_link&creator=41222371"
+	},
+	"item": [
+		{
+			"name": "Send Message",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR_TOKEN"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"whatsapp_client_id\": 1,\n    \"type\": \"template\",\n    \"phone_number\": \"34684149605\",\n    \"template_name\": \"hello_world\",\n    \"language_code\": \"en_US\",\n    \"parameters\": [\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/messages",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get messages",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/messages",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"messages"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
