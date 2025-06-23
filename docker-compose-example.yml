@@ -1,5 +1,5 @@
 services:
-  casal_ginebro:
+  app_whatsapp_bot:
     build:
       context: ./docker
       dockerfile: Dockerfile
@@ -17,7 +17,7 @@ services:
     volumes:
       - ./:/var/www/html
     networks:
-      - casal_ginebro
+      - app_whatsapp_bot
     depends_on:
       - mysql
     healthcheck:
@@ -38,11 +38,11 @@ services:
     ports:
       - 2000:3306
     networks:
-      - casal_ginebro
+      - app_whatsapp_bot
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin_casal_ginebro
+    container_name: phpmyadmin_app_whatsapp_bot
     restart: always
     environment:
       PMA_HOST: mysql
@@ -50,10 +50,10 @@ services:
     ports:
       - "8081:80"
     networks:
-      - casal_ginebro
+      - app_whatsapp_bot
     depends_on:
       - mysql
 
 networks:
-  casal_ginebro:
+  app_whatsapp_bot:
     external: true

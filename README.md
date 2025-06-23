@@ -107,7 +107,7 @@ cp docker-compose-example.yml docker-compose.yml
 
 3. **Crear red de Docker**
 ```bash
-docker network create casal_ginebro
+docker network create app_whatsapp_bot
 ```
 
 4. **Ejecutar con Docker Compose**
@@ -117,15 +117,15 @@ docker-compose up -d
 
 5. **Instalar dependencias dentro del contenedor**
 ```bash
-docker-compose exec casal_ginebro composer install
-docker-compose exec casal_ginebro npm install
-docker-compose exec casal_ginebro npm run build
+docker-compose exec app_whatsapp_bot composer install
+docker-compose exec app_whatsapp_bot npm install
+docker-compose exec app_whatsapp_bot npm run build
 ```
 
 6. **Ejecutar migraciones**
 ```bash
-docker-compose exec casal_ginebro php artisan migrate
-docker-compose exec casal_ginebro php artisan db:seed
+docker-compose exec app_whatsapp_bot php artisan migrate
+docker-compose exec app_whatsapp_bot php artisan db:seed
 ```
 
 ## ⚙️ Configuración

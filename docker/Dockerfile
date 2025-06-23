@@ -1,4 +1,3 @@
-# Usa la imagen de PHP 8.2 proporcionada por serversideup/php
 FROM serversideup/php:8.1-fpm-apache
 
 USER root
