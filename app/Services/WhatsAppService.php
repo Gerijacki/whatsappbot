@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Message;
 use App\Models\WhatsAppClient;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class WhatsAppService
 {
@@ -44,7 +45,15 @@ class WhatsAppService
             ],
         };
 
-        return Http::withToken($client->access_token)
+        $response = Http::withToken($client->access_token)
             ->post($endpoint, $payload);
+        
+        Log::info('WhatsApp API Response', [
+            'status' => $response->status(),
+            'body' => $response->body(),
+            'message_id' => $message->id,
+        ]);
+
+        return $response;
     }
 }

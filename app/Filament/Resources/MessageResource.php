@@ -32,20 +32,20 @@ class MessageResource extends Resource
                 ->required(),
 
             Select::make('type')->options([
-                'text' => 'Text',
+                //'text' => 'Text',
                 'template' => 'Template',
-                'interactive' => 'Interactive',
+                //'interactive' => 'Interactive',
             ])->required(),
 
             TextInput::make('phone_number')->required(),
 
-            TextInput::make('text')->visible(fn ($get) => $get('type') === 'text'),
+            //TextInput::make('text')->visible(fn ($get) => $get('type') === 'text'),
 
             TextInput::make('template_name')->visible(fn ($get) => $get('type') === 'template'),
             TextInput::make('language_code')->visible(fn ($get) => $get('type') === 'template'),
             KeyValue::make('parameters')->visible(fn ($get) => $get('type') === 'template'),
 
-            KeyValue::make('interactive_content')->visible(fn ($get) => $get('type') === 'interactive'),
+            //KeyValue::make('interactive_content')->visible(fn ($get) => $get('type') === 'interactive'),
 
             Select::make('status')->options([
                 'pending' => 'Pending',
