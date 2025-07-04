@@ -30,9 +30,14 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+
     'whatsapp' => [
-        'token' => env('WHATSAPP_TOKEN'),
-        'phone_number_id' => env('WHATSAPP_PHONE_ID'),
+        'verify_token' => env('WHATSAPP_VERIFY_TOKEN', 'tu_token_de_verificacion'),
+        'app_id' => env('WHATSAPP_APP_ID'),
+        'app_secret' => env('WHATSAPP_APP_SECRET'),
+        'phone_number_id' => env('WHATSAPP_PHONE_NUMBER_ID'),
+        'access_token' => env('WHATSAPP_ACCESS_TOKEN'),
+        'webhook_url' => env('WHATSAPP_WEBHOOK_URL'),
     ],
 
 ];
